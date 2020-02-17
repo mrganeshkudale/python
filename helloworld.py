@@ -6,7 +6,13 @@ api = Api(app)
 
 class Greeting (Resource):
     def get(self):
-        return 'Hello Docker World, Something!'
+	try: 
+          host_name = socket.gethostname() 
+          host_ip = socket.gethostbyname(host_name) 
+          message = "Hostname :  "+ host_name + "IP : " + host_ip 
+	  return message 
+        except: 
+          return 'Sorry! Something is not right, let me look into it!'
 
 api.add_resource(Greeting, '/') # Route_1
 
