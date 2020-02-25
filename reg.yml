@@ -10,3 +10,12 @@ services:
     restart: always
     volumes:
       - /tmp/volume:/var/lib/registry
+
+  docker-registry-ui:
+    image: konradkleine/docker-registry-frontend:v2
+    container_name: docker-registry-ui
+    ports:
+      - 8080:8081
+    environment:
+      ENV_DOCKER_REGISTRY_HOST: docker-registry
+      ENV_DOCKER_REGISTRY_PORT: 5000
