@@ -22,8 +22,8 @@ pipeline {
 	}
 	stage('deploy-cloud'){
 	    steps{
-		sh "kubectl create deployment localpydeployment${BUILD_NUMBER} --image=localhost:5000/asawari/localpy${BUILD_NUMBER}"
-		sh "kubectl expose deployment localpydeployment${BUILD_NUMBER} --type=LoadBalancer --port=8080 --name=localpyservice${BUILD_NUMBER}"
+		sh "sudo -u asawari kubectl create deployment localpydeployment${BUILD_NUMBER} --image=localhost:5000/asawari/localpy${BUILD_NUMBER}"
+		sh "sudo -u asawari kubectl expose deployment localpydeployment${BUILD_NUMBER} --type=LoadBalancer --port=8080 --name=localpyservice${BUILD_NUMBER}"
 	    }
 	}
     }
