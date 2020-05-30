@@ -6,12 +6,12 @@ pipeline {
     stages {
         stage('application-build') {
             steps {
-		sh "cd /home/asawari/Code/sample-projects/demo && git clone https://github.com/mrganeshkudale/Python.git"
+		sh "cd ~ && git clone https://github.com/mrganeshkudale/Python.git"
             }
 	}
 	stage('application-containerization'){
 	    steps {
-		sh "cd /home/asawari/Code/sample-projects/demo/Python && sudo -S docker build --build-arg DEPENDENCY=build/dependency -t local${BUILD_NUMBER} ."                
+		sh "cd ~ && sudo -S docker build --build-arg DEPENDENCY=build/dependency -t local${BUILD_NUMBER} ."                
 	    }
 	}
 	stage('image-versioning'){
