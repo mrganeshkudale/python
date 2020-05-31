@@ -11,19 +11,19 @@ pipeline {
 	}
 	stage('application-containerization'){
 	    steps {
-		sh "cd ~ && sudo -S docker build --build-arg DEPENDENCY=build/dependency -t local${BUILD_NUMBER} ."                
+		sh "cd ~ && docker build --build-arg DEPENDENCY=build/dependency -t local${BUILD_NUMBER} ."                
 	    }
 	}
 	stage('image-versioning'){
 	    steps {
-		sh "sudo -S docker tag localpy${BUILD_NUMBER} localhost:32000/mrganeshkudale/localpy${BUILD_NUMBER}"
-		sh "sudo -S docker push localhost:32000/mrganeshkudale/localpy${BUILD_NUMBER}"
+		sh "docker tag localpy${BUILD_NUMBER} localhost:32000/mrganeshkudale/localpy${BUILD_NUMBER}"
+		sh "docker push localhost:32000/mrganeshkudale/localpy${BUILD_NUMBER}"
 	    }
 	}
 	stage('deploy-cloud'){
 	    steps{
-		sh "sudo -S kubectl create deployment localpydeployment${BUILD_NUMBER} --image=localhost:32000/mrganeshkudale/localpy${BUILD_NUMBER}"
-		sh "sudo -S kubectl expose deployment localpydeployment${BUILD_NUMBER} --type=LoadBalancer --port=5000 --name=localpyservice${BUILD_NUMBER}"
+		sh "kubectl create deployment localpydeployment${BUILD_NUMBER} --image=localhost:32000/mrganeshkudale/localpy${BUILD_NUMBER}"
+		sh "kubectl expose deployment localpydeployment${BUILD_NUMBER} --type=LoadBalancer --port=5000 --name=localpyservice${BUILD_NUMBER}"
 	    }
 	}
     }
