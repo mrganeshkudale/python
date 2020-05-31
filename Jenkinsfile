@@ -11,7 +11,7 @@ pipeline {
 	}
 	stage('application-containerization'){
 	    steps {
-		sh "cd ~ && docker build --build-arg DEPENDENCY=build/dependency -t local${BUILD_NUMBER} ."                
+		sh "cd ~/Python && docker build --build-arg DEPENDENCY=build/dependency -t local${BUILD_NUMBER} ."                
 	    }
 	}
 	stage('image-versioning'){
