@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('application-build') {
             steps {
-		sh "cd ~ && git clone https://github.com/mrganeshkudale/Python.git"
+		sh "cd ~ && rm -rf Python && git clone https://github.com/mrganeshkudale/Python.git"
             }
 	}
 	stage('application-containerization'){
