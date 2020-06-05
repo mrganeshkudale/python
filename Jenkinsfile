@@ -23,7 +23,7 @@ pipeline {
 	stage('deploy-cloud'){
 	    steps{
 		sh "sudo -S kubectl create deployment localpydeployment${BUILD_NUMBER} --image=localhost:32000/mrganeshkudale/localpy${BUILD_NUMBER}"
-		sh "sudo -S kubectl expose deployment localpydeployment${BUILD_NUMBER} --type=LoadBalancer --port=5000 --name=localpyservice${BUILD_NUMBER}"
+		sh "sudo -S kubectl expose deployment localpydeployment${BUILD_NUMBER} --type=LoadBalancer --port=3333 --name=localpyservice${BUILD_NUMBER}"
 	    }
 	}
     }
