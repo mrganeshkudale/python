@@ -14,8 +14,7 @@ class Greeting (Resource):
         print("IP : ",host_ip) 
       except: 
         print("Unable to get Hostname and IP") 
-        
-      return 'Hello Docker World Again!'
+    return host_name
 
 api.add_resource(Greeting, '/') # Route_1
 
