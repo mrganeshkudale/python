@@ -6,15 +6,8 @@ app = Flask(__name__)
 api = Api(app)
 
 class Greeting (Resource):
-    def get(self):
-      try: 
-        host_name = socket.gethostname() 
-        host_ip = socket.gethostbyname(host_name) 
-        print("Hostname :  ",host_name) 
-        print("IP : ",host_ip) 
-      except: 
-        print("Unable to get Hostname and IP") 
-    return host_name
+    def get(self
+    return socket.gethostname()
 
 api.add_resource(Greeting, '/') # Route_1
 
