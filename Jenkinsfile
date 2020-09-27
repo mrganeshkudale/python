@@ -16,8 +16,8 @@ pipeline {
 	}
 	stage('image-versioning'){
 	    steps {
-		sh "sudo -S docker tag localpy${BUILD_NUMBER} localhost:32000/mrganeshkudale/localpy${BUILD_NUMBER}"
-		sh "sudo -S docker push localhost:32000/mrganeshkudale/localpy${BUILD_NUMBER}"
+		sh "sudo -S docker tag localpy${BUILD_NUMBER} localhost:5000/mrganeshkudale/localpy${BUILD_NUMBER}"
+		sh "sudo -S docker push localhost:5000/mrganeshkudale/localpy${BUILD_NUMBER}"
 	    }
 	}
 	stage('deploy-cloud'){
