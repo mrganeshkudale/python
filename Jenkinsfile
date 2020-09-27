@@ -16,6 +16,7 @@ pipeline {
 	}
 	stage('image-versioning'){
 	    steps {
+		sh "sudo -S docker run -d -p 5000:5000 --restart=always --name registry registry:2"
 		sh "sudo -S docker tag localpy${BUILD_NUMBER} localhost:5000/mrganeshkudale/localpy${BUILD_NUMBER}"
 		sh "sudo -S docker push localhost:5000/mrganeshkudale/localpy${BUILD_NUMBER}"
 	    }
