@@ -7,7 +7,8 @@ api = Api(app)
 
 class Greeting (Resource):
     def get(self):
-      return "Welcome back again!"
+        message = "Welcome back, greetings from "+socket.gethostname()+"!"
+      return message 
 
 api.add_resource(Greeting, '/') # Route_1
 
