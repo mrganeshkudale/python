@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nbot-deployment
+  namespace: nbot
+spec:
+  selector:
+    matchLabels:
+      app: nbot-deployment
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nbot-deployment
+    spec:
+      containers:
+      - name: pods-nbot-deployment
+        image: docker.io/mrganeshkudale/nbot:latest
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 200m
+          limits:
+            cpu: 300m
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: nbot-service
+    namespace: nbot
+spec:
+  selector:
+    app: sample-deployment
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 5000
